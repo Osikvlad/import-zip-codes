@@ -34,4 +34,9 @@ Route::group(['middleware' => 'guest:api'], function () {
 
     Route::post('oauth/{driver}', 'Auth\OAuthController@redirectToProvider');
     Route::get('oauth/{driver}/callback', 'Auth\OAuthController@handleProviderCallback')->name('oauth.callback');
+
+    Route::post('/import-data', 'ImportController@import');
+    Route::get('/get-data', 'ImportController@index');
+    Route::post('/find-zip', 'SearchController@findZip');
+    Route::post('/find-city', 'SearchController@findCity');
 });

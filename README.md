@@ -1,65 +1,25 @@
-# Laravel-Vue SPA 
+1. Run <code>composer install</code>;
 
-<a href="https://travis-ci.org/cretueusebiu/laravel-vue-spa"><img src="https://travis-ci.org/cretueusebiu/laravel-vue-spa.svg?branch=master" alt="Build Status"></a>
-<a href="https://packagist.org/packages/cretueusebiu/laravel-vue-spa"><img src="https://poser.pugx.org/cretueusebiu/laravel-vue-spa/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/cretueusebiu/laravel-vue-spa"><img src="https://poser.pugx.org/cretueusebiu/laravel-vue-spa/v/stable.svg" alt="Latest Stable Version"></a>
+2. Run <code>npm install</code>;
 
-> A Laravel-Vue SPA starter project template.
+3. Configure .env file ;
 
-<p align="center">
-<img src="https://i.imgur.com/NHFTsGt.png">
-</p>
+4. Run <code>php artisan key:generate</code>;
 
-## Features
+5. Change connection to DB in .env;
 
-- Laravel 7
-- Vue + VueRouter + Vuex + VueI18n + ESlint
-- Pages with dynamic import and custom layouts
-- Login, register, email verification and password reset
-- Authentication with JWT
-- Socialite integration
-- Bootstrap 4 + Font Awesome 5
+6. Run <code>php artisan migrate</code>;
 
-## Installation
+7. Run <code>php artisan serve</code>;
 
-- `composer create-project --prefer-dist cretueusebiu/laravel-vue-spa`
-- Edit `.env` and set your database connection details
-- (When installed via git clone or download, run `php artisan key:generate` and `php artisan jwt:secret`)
-- `php artisan migrate`
-- `npm install`
+8. Run <code>npm run watch</code>;
 
-## Usage
+## После загрузки CSV файла, необходимо выполнить:
+<code>php artisan queue:work</code>
+## Затем начнется загрузка данных из файла.
 
-#### Development
-
-```bash
-# build and watch
-npm run watch
-
-# serve with hot reloading
-npm run hot
-```
-
-#### Production
-
-```bash
-npm run production
-```
-
-## Socialite
-
-This project comes with GitHub as an example for [Laravel Socialite](https://laravel.com/docs/5.8/socialite).
-
-To enable the provider create a new GitHub application and use `https://example.com/api/oauth/github/callback` as the Authorization callback URL.
-
-Edit `.env` and set `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` with the keys form your GitHub application.
-
-For other providers you may need to set the appropriate keys in `config/services.php` and redirect url in `OAuthController.php`.
-
-## Email Verification
-
-To enable email verification make sure that your `App\User` model implements the `Illuminate\Contracts\Auth\MustVerifyEmail` contract.
-
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+## Routes: 
+<p>/api/get-data - получить все данные из таблицы import_data (GET)</p>
+<p>/api/import-data - загрузки файла, принимает параметр file (POST)</p>
+<p>/api/find-zip - получение данных по зип коду (точное вхождение), принимает параметр zip (POST)</p>
+<p>/api/find-city - получение данных по городу (частичное совпадение по 2м и более буквам в названии города), принимает параметр city (POST)</p>
